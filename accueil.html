@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse d'Interview </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="centered-container">
+    <div class="card">
+      <h1 class="title"> Analyse d'Interview IA</h1>
+      <p class="subtitle">Dépose ta vidéo ou ta transcription pour lancer l’analyse.</p>
+
+      <form id="uploadForm" class="upload-form">
+        <input type="file" id="videoInput" accept="video/*,.txt" />
+        <button type="submit">Analyser l’interview</button>
+      </form>
+
+      <p class="note">Formats acceptés : .mp4, .mov</p>
+      <p id="errorMessage" class="error-message"></p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
