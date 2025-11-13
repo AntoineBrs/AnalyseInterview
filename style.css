@@ -1,0 +1,121 @@
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.centered-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 550px;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* --- Titres et textes --- */
+.title {
+  font-size: 26px;
+  color: #0a66c2;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.note {
+  font-size: 14px;
+  color: #888;
+  margin-top: 15px;
+}
+
+.error-message {
+  color: #d93025;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* --- Boutons et formulaires --- */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="file"] {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+button {
+  background-color: #0a66c2;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+button:hover {
+  background-color: #004182;
+}
+
+/* --- Page résultat --- */
+.result-card {
+  text-align: left;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+h2 {
+  margin: 0;
+  color: #333;
+}
+
+.time {
+  font-size: 14px;
+  color: #777;
+}
+
+.content h3 {
+  color: #0a66c2;
+  margin-top: 20px;
+}
+
+.content ul {
+  list-style-type: "👉 ";
+  padding-left: 20px;
+}
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+}
