@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats de l'Analyse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="centered-container">
+    <div class="card result-card">
+      <div class="profile">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Photo Profil" class="avatar">
+        <div>
+          <h2 id="name">Interview : </h2>
+          <p class="time">Publié il y a quelques instants</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <h3> Résumé en 5 points</h3>
+        <ul id="summary"></ul>
+
+        <h3> Mots-clés</h3>
+        <p id="keywords"></p>
+
+        <h3> Analyse des émotions</h3>
+        <p id="sentiments"></p>
+      </div>
+
+      <div class="footer">
+        <button onclick="window.location.href='accueil.html'">⬅ Retour</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    
+    const summary = JSON.parse(localStorage.getItem('summary')) || ["Aucune donnée trouvée."];
+    const keywords = localStorage.getItem('keywords') || "Aucun mot-clé disponible.";
+    const sentiments = localStorage.getItem('sentiments') || "Aucune analyse d’émotions.";
+
+    const summaryList = document.getElementById("summary");
+    summaryList.innerHTML = summary.map(point => `<li>${point}</li>`).join("");
+    document.getElementById("keywords").textContent = keywords;
+    document.getElementById("sentiments").textContent = sentiments;
+  </script>
+</body>
+</html>
