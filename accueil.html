@@ -13,12 +13,12 @@
       <p class="subtitle">Dépose ta vidéo ou ta transcription pour lancer l’analyse.</p>
 
       <form id="uploadForm" class="upload-form">
-        <input type="file" id="videoInput" accept="video/*,.txt" />
+        <input type="file" id="videoInput" accept="audio/*,.mp3">
         <button type="submit">Analyser l’interview</button>
       </form>
-
-      <p class="note">Formats acceptés : .mp4, .mov</p>
+      <p class="note">Formats acceptés : .mp3</p>
       <p id="errorMessage" class="error-message"></p>
+      <div id="transcriptionResult" style="margin-top:20px;"></div>
     </div>
   </main>
 
