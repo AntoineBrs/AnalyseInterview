@@ -1,0 +1,7 @@
+flask
+flask-cors
+openai-whisper
+torch
+transformers
+requests
+huggingface-hub
