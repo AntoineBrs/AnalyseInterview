@@ -207,7 +207,7 @@ def summarize():
     if hf_token:
         summary = summarize_with_hf(text, hf_token, model=model_name, max_length=max_length, min_length=min_length)
 
-    # If HF not available or failed, try local transformers
+    
     if summary is None:
         summary = summarize_with_transformers(text, model_name=model_name, max_length=max_length, min_length=min_length)
 
