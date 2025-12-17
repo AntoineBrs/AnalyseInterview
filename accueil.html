@@ -3,25 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analyse d'Interview </title>
+  <title>Analyse d'Interview IA</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Favicon: A remplacer par la bonne l'URL -->
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png">
 </head>
-<body>
-  <main class="centered-container">
-    <div class="card">
-      <h1 class="title"> Analyse d'Interview IA</h1>
-      <p class="subtitle">Dépose ta vidéo ou ta transcription pour lancer l’analyse.</p>
+<body class="accueil-style">
+  <main class="accueil-container">
+    
+    <div class="menu-burger">
+      <button class="menu-trigger" id="menuTrigger" title="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="#" class="menu-item" data-action="history">
+          <span class="menu-icon">📚</span>
+          <span class="menu-text">Historique</span>
+          <span class="menu-badge">Bientôt</span>
+        </a>
+        <a href="#" class="menu-item" data-action="import">
+          <span class="menu-icon">📥</span>
+          <span class="menu-text">Importer les données</span>
+          <span class="menu-badge">Bientôt</span>
+        </a>
+        <hr class="menu-divider">
+        <a href="#" class="menu-item" data-action="settings">
+          <span class="menu-icon">⚙️</span>
+          <span class="menu-text">Paramètres</span>
+          <span class="menu-badge">Bientôt</span>
+        </a>
+        <a href="#" class="menu-item" data-action="about">
+          <span class="menu-icon">ℹ️</span>
+          <span class="menu-text">À propos</span>
+        </a>
+        <a href="#" class="menu-item" data-action="help">
+          <span class="menu-icon">❓</span>
+          <span class="menu-text">Aide & Support</span>
+        </a>
+      </div>
+    </div>
 
-      <form id="uploadForm" class="upload-form">
-        <input type="file" id="videoInput" accept="audio/*,.mp3">
-        <button type="submit">Analyser l’interview</button>
-      </form>
-      <p class="note">Formats acceptés : .mp3</p>
-      <p id="errorMessage" class="error-message"></p>
-      <div id="transcriptionResult" style="margin-top:20px;"></div>
+    <div class="accueil-card">
+      
+      <div class="accueil-header">
+        <h1 class="accueil-title"> Analyse d'Interview IA</h1>
+        <p class="accueil-subtitle">Transcrivez et analysez vos interviews avec l'intelligence artificielle</p>
+      </div>
+
+      <!-- Contenu principal -->
+      <div class="accueil-content">
+       
+        <div class="accueil-tabs">
+          <button type="button" class="accueil-tab-button active" data-tab="audio">
+            <span class="tab-icon">🎵</span>
+            <span>Fichier Audio</span>
+          </button>
+          <button type="button" class="accueil-tab-button" data-tab="text">
+            <span class="tab-icon">📝</span>
+            <span>Texte </span>
+          </button>
+        </div>
+
+        <form id="uploadForm" class="accueil-form">
+          <!-- Onglet Audio -->
+          <div id="audio-tab" class="accueil-tab-content active">
+            <div class="file-input-wrapper">
+              <input type="file" id="audioInput" accept="audio/*,.mp3" class="file-input">
+              <label for="audioInput" class="file-label">
+                <span class="upload-icon">📤</span>
+                <span class="upload-text">Cliquez pour sélectionner un fichier audio</span>
+                <span class="upload-subtext">Formats acceptés: .mp3</span>
+              </label>
+              <p class="file-name-display" id="audioFileName"></p>
+            </div>
+          </div>
+
+          <!-- Onglet Texte -->
+          <div id="text-tab" class="accueil-tab-content">
+            <textarea 
+              id="textInput" 
+              placeholder="Collez votre transcription ou texte d'interview ici..." 
+              rows="10" 
+              class="accueil-textarea"
+            ></textarea>
+            <p class="char-count"><span id="charCount">0</span> caractères</p>
+          </div>
+
+          <p id="errorMessage" class="accueil-error"></p>
+          <div id="loadingMessage" class="accueil-loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>Traitement en cours... Cela peut prendre quelques minutes.</p>
+          </div>
+
+          <button type="submit" class="accueil-submit-btn" id="submitBtn">
+            <span></span> Analyser l'interview
+          </button>
+        </form>
+
+        <!-- Infos -->
+        <div class="accueil-info">
+          <div class="info-item">
+            <span class="info-icon">⚡</span>
+            <p><strong>Rapide:</strong> Analyse en quelques minutes</p>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🤖</span>
+            <p><strong>IA Avancée:</strong> Whisper + T5 pour la meilleure qualité</p>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📊</span>
+            <p><strong>Résultats Pro:</strong> Résumé, mots-clés, analyse d'émotions</p>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
+  <!-- Modal À propos -->
+  <div class="modal" id="aboutModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <h2>À propos d'Analyse Interview IA</h2>
+      <p><strong>Version:</strong> 1.0</p>
+      <p><strong>Description:</strong> Application web pour transcrire et analyser des interviews avec l'intelligence artificielle.</p>
+      
+      <h3>🔧 Technologies utilisées:</h3>
+      <ul>
+        <li>OpenAI Whisper - Transcription audio</li>
+        <li>Hugging Face T5 - Résumé de texte</li>
+        <li>Flask - Backend web</li>
+        <li>PyTorch - Framework IA</li>
+      </ul>
+
+      <h3>📋 Fonctionnalités actuelles:</h3>
+      <ul>
+        <li>✅ Transcription audio en français</li>
+        <li>✅ Résumé intelligent avec chunking</li>
+        <li>✅ Extraction de mots-clés</li>
+        <li>✅ Analyse d'émotions</li>
+        <li>✅ Interface responsive</li>
+      </ul>
+
+      <h3>🚀 Prochaines améliorations:</h3>
+      <ul>
+        <li>📚 Historique complet des interviews</li>
+        <li>💾 Export des résultats (PDF, JSON)</li>
+        <li>📥 Import de données</li>
+        <li>👥 Gestion de profils multiples</li>
+        <li>🎨 Thèmes personnalisés</li>
+      </ul>
+
+      <button class="btn-modal-close" onclick="document.getElementById('aboutModal').style.display='none';">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Modal Aide -->
+  <div class="modal" id="helpModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose2">&times;</span>
+      <h2>Aide & Support</h2>
+      
+      <h3>🎵 Comment utiliser l'onglet Audio?</h3>
+      <p>1. Cliquez sur "Fichier Audio"<br>
+         2. Sélectionnez un fichier .mp3<br>
+         3. Cliquez sur "Analyser l'interview"<br>
+         4. Attendez le traitement (quelques minutes)</p>
+
+      <h3>📝 Comment utiliser l'onglet Texte?</h3>
+      <p>1. Cliquez sur "Texte Direct"<br>
+         2. Collez votre transcription<br>
+         3. Cliquez sur "Analyser l'interview"</p>
+
+      <h3>❓ Questions fréquentes</h3>
+      <p><strong>Q: Combien de temps prend l'analyse?</strong><br>
+         R: Entre 2 et 5 minutes selon la longueur de l'audio.</p>
+      
+      <p><strong>Q: Mes données sont-elles sauvegardées?</strong><br>
+         R: Les résultats restent dans votre navigateur (localStorage).</p>
+      
+      <p><strong>Q: Quels formats audio sont acceptés?</strong><br>
+         R: Actuellement .mp3 (d'autres formats peuvent être ajoutés).</p>
+
+      <button class="btn-modal-close" onclick="document.getElementById('helpModal').style.display='none';">Fermer</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // Gestion des onglets
+    document.querySelectorAll('.accueil-tab-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tabName = this.getAttribute('data-tab');
+        
+        document.querySelectorAll('.accueil-tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.accueil-tab-content').forEach(tab => tab.classList.remove('active'));
+        
+        this.classList.add('active');
+        document.getElementById(tabName + '-tab').classList.add('active');
+      });
+    });
+
+    // Afficher le nom du fichier audio
+    document.getElementById('audioInput').addEventListener('change', function() {
+      const fileName = this.files[0] ? this.files[0].name : '';
+      document.getElementById('audioFileName').textContent = fileName ? `📁 ${fileName}` : '';
+    });
+
+    // Compter les caractères du textarea
+    document.getElementById('textInput').addEventListener('input', function() {
+      document.getElementById('charCount').textContent = this.value.length;
+    });
+  </script>
 </body>
 </html>

@@ -3,25 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analyse d'Interview IA</title>
+  <title>Résultats de l'Analyse</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Favicon: A remplacer par la bonne l'URL -->
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png">
 </head>
-<body>
-  <main class="centered-container">
-    <div class="card">
-      <h1 class="title">Analyse d'Interview IA</h1>
-      <p class="subtitle">Dépose ta vidéo ou ta transcription pour lancer l’analyse.</p>
+<body class="linkedin-style">
+  <main class="linkedin-container">
+    <div class="linkedin-post">
+      <!-- Header du post -->
+      <div class="post-header">
+        <div class="author-info">
+          <img id="userAvatar" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Votre profil" class="author-avatar">
+          <div class="author-details">
+            <h3 class="author-name">Vous</h3>
+            <p class="post-date">Publié il y a quelques instants</p>
+          </div>
+        </div>
+      </div>
 
-      <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
-        <input type="file" id="videoInput" accept="audio/*,.mp3" required>
-        <button type="submit">Analyser l’interview</button>
-      </form>
+      <!-- Contenu du post -->
+      <div class="post-content">
+        <h2 class="post-title">📊 Analyse d'Interview</h2>
+        
+        <!-- Résumé en 2 paragraphes -->
+        <div class="summary-section">
+          <div id="summaryContainer" class="summary-text"></div>
+        </div>
 
-      <p class="note">Formats acceptés : .mp3</p>
-      <p id="errorMessage" class="error-message"></p>
-      <div id="transcriptionResult" style="margin-top:20px;"></div>
+        <!-- Image optionnelle entre résumé et mots-clés -->
+        <div class="image-section" id="imageSection" style="display:none;">
+          <img id="postImage" src="" alt="Image de l'interview" class="post-image">
+        </div>
+
+        <!-- Mots-clés avec hashtags -->
+        <div class="keywords-section">
+          <div id="keywordsContainer" class="keywords-list"></div>
+        </div>
+
+        <!-- Sentiment -->
+        <div class="sentiment-section">
+          <p class="sentiment-label">💭 Tonalité générale:</p>
+          <p id="sentimentText" class="sentiment-text"></p>
+        </div>
+      </div>
+
+      <div class="post-footer">
+        <button class="btn-retour" onclick="window.location.href='/'">⬅ Retour à l'accueil</button>
+      </div>
     </div>
   </main>
-  <script src="script.js"></script>
+
+  <script>
+    const summary = JSON.parse(localStorage.getItem('summary')) || ["Aucune donnée trouvée."];
+    const keywords = JSON.parse(localStorage.getItem('keywords')) || [];
+    const sentiments = localStorage.getItem('sentiments') || "Aucune analyse d'émotions.";
+
+    // Afficher le résumé en paragraphes
+    const summaryContainer = document.getElementById("summaryContainer");
+    if (summary && summary.length > 0) {
+      const paragraphsHTML = summary
+        .map(para => `<p class="summary-paragraph">${para.trim()}</p>`)
+        .join('');
+      summaryContainer.innerHTML = paragraphsHTML;
+    }
+
+    // Afficher les mots-clés comme hashtags
+    const keywordsContainer = document.getElementById("keywordsContainer");
+    if (Array.isArray(keywords) && keywords.length > 0) {
+      const hashtagsHTML = keywords
+        .map(keyword => `<span class="hashtag">#${keyword}</span>`)
+        .join('');
+      keywordsContainer.innerHTML = hashtagsHTML;
+    } else {
+      keywordsContainer.innerHTML = '<p>Aucun mot-clé détecté.</p>';
+    }
+
+    // Afficher le sentiment
+    document.getElementById("sentimentText").textContent = sentiments;
+
+    // Optionnel: Changer l'image du profil
+    // Décommentez et mettez à jour l'URL 
+    // document.getElementById("userAvatar").src = "votre-image.jpg";
+  </script>
 </body>
 </html>
