@@ -42,8 +42,7 @@ AnalyseInterview/
 ├── style.css                 # Styles des 2 pages
 ├── transcribe_api.py         # Script original (référence)
 ├── requirements.txt          # Dépendances Python
-├── README.md                  # Ce fichier
-├── IMAGES_GUIDE.md           # Guide des images                  
+├── README.md                  # Ce fichier                
 
 ```
 
