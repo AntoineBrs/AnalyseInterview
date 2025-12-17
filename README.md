@@ -28,27 +28,6 @@ python api.py
 
 Le serveur démarre sur `http://localhost:5050` et ouvre automatiquement votre navigateur.
 
----
-
-## 📸 Personnalisation des Images
-
-### Favicon (Icône de l'onglet)
-1. Remplacez dans `accueil.html` et `analyse.html` (ligne ~8):
-```html
-<link rel="icon" type="image/png" href="VOTRE_IMAGE_ICI">
-```
-
-### Image du Post (Page d'Analyse)
-L'espace pour une image est prévu entre le résumé et les mots-clés. 
-
-Pour l'afficher, modifiez le script dans `analyse.html`:
-```javascript
-const imageUrl = 'votre-url-image.jpg';
-document.getElementById('postImage').src = imageUrl;
-document.getElementById('imageSection').style.display = 'block';
-```
-
-Consultez `IMAGES_GUIDE.md` pour plus de détails.
 
 ---
 
@@ -63,9 +42,8 @@ AnalyseInterview/
 ├── style.css                 # Styles des 2 pages
 ├── transcribe_api.py         # Script original (référence)
 ├── requirements.txt          # Dépendances Python
-├── SETUP.md                  # Ce fichier
-├── IMAGES_GUIDE.md           # Guide des images
-└── audios/                   # Dossier des fichiers audio
+├── README.md                  # Ce fichier
+├── IMAGES_GUIDE.md           # Guide des images                  
 
 ```
 
@@ -92,8 +70,8 @@ app.run(debug=True, host='localhost', port=VOTRE_PORT)
 2. **Upload** - Envoyer le fichier ou coller le texte
 3. **Traitement** - API transcrit, résume, extrait mots-clés
 4. **Résultats** (`/analyse`) - Page LinkedIn avec:
-   - 📝 Résumé en 2 paragraphes
-   - 🏷️ Mots-clés comme hashtags
+   - 📝 Résumé 
+   - 🏷️ Mots-clés avec hashtags
    - 💭 Analyse d'émotions
 
 ---
@@ -137,7 +115,6 @@ app.run(debug=True, host='localhost', port=VOTRE_PORT)
 ## 👨‍💻 Support
 
 Pour toute question ou amélioration, consultez les fichiers:
-- `IMAGES_GUIDE.md` - Personnalisation des images
 - `api.py` - Logique backend
 - `style.css` - Styles et design
 
