@@ -6,7 +6,7 @@ Application web professionnelle pour transcrire et analyser des interviews avec 
 
 ### Fonctionnalités
 - ✅ Transcription audio (Whisper)
-- ✅ Résumé intelligent en 2 paragraphes (T5 + Chunking)
+- ✅ Résumé intelligent (T5 + Chunking)
 - ✅ Extraction de mots-clés intelligente
 - ✅ Analyse d'émotions
 - ✅ Interface professionnelle et responsive
